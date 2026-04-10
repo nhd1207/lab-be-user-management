@@ -13,10 +13,10 @@ jobs:
         with:
           go-version: 1.26
       - name: Install dependencies
-        run: go get .
+        run: RUN go mod download
       - name: Test with the Go CLI
         if: github.event_name == 'pull_request'
-        run: go test
+        run: go test ./...
       - name: Build
         if: ${{ github.event.issue.pull_request || github.event_name == 'push' && github.ref_name == 'main' }}
         run: go build -v ./...
