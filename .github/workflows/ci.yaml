@@ -11,9 +11,9 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v5
         with:
-          go-version: 1.26
+          go-version-file: go.mod
       - name: Install dependencies
-        run: RUN go mod download
+        run: go mod download
       - name: Test with the Go CLI
         if: github.event_name == 'pull_request'
         run: go test ./...
